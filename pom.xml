@@ -210,7 +210,7 @@
       <distributionManagement>
 		 <snapshotRepository>
 		    <id>nexusRepo</id>
-		    <url>http://54.144.141.73:8081/repository/Test_Snapshot/</url>
+		    <url>http://54.144.141.73:8081/repository/Test-snapshot/</url>
 		 </snapshotRepository>
 		
 		<repository>
