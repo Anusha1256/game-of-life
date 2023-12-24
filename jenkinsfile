@@ -10,7 +10,7 @@ pipeline {
         stage('CLONE SCM') {
             steps {
                 echo 'cloning code from Github'
-				git branch: 'main', url: 'https://github.com/Anusha1256/game-of-life.git'
+				git branch: 'master', url: 'https://github.com/Anusha1256/game-of-life.git'
             }
         }
 			
