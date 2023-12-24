@@ -14,14 +14,6 @@ pipeline {
             }
         }
 			
-		stage('SONARQUBE ANALYSIS') {
-            steps {
-                echo 'SONARQUBE ANALYSIS'
-				sh 'mvn clean sonar:sonar'
-            }
-        }
-		
-		
 		stage('Build Artifact AND PUSHING TO NEXUS') {
             steps {
                 echo 'Build Artifact with maven build tool'
@@ -29,11 +21,19 @@ pipeline {
             }
         }
 		
+		
+		stage('Sonarqube') {
+            steps {
+                echo 'Sonarqube analysis'
+				sh 'mvn clean sonar:sonar'
+            }
+        }
+		
 		stage('Deploy') {
             steps {
                 echo 'Deploy to tomcat ap/n server '
-				deploy adapters: [tomcat9(credentialsId: 'tomcat-creds', path: '', url: 'http://44.202.153.48:8081/')], contextPath: 'GOL', war: '**/*.war'
-            }
+			deploy adapters: [tomcat9(credentialsId: 'tomcat', path: '', url: 'http://54.197.21.122:8081/')], contextPath: 'GOL', war: '**/*.war'	
+          }
         }
     }
 }
